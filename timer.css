@@ -1,0 +1,95 @@
+/*
+storm | #373034 | avilluk 5470 ||
+stormy | #5F656B | avilluk 4408 ||
+radi8ed light | #F1E8F6 | avilluk 9695 ||
+ac chrome white | #E8F1DA | avilluk 860 ||
+down | #8B8988 | avilluk 1141 ||
+http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
+
+*/
+
+.timer-wrapper{
+   background: rgba(95,101,107,0.7);
+   border-radius: 5px;
+   box-shadow: 0px 0px 20px #373034;
+   padding: 10px;
+}
+
+.timer-footer{
+   color: #E8F1DA;
+   font-size: 0.8em;
+   text-align: right;
+   text-shadow: 1px 1px 2px #373034;
+}
+
+.timer-control-set{
+   background: rgba(95,101,107,0.9);
+   border-radius: 5px;
+   box-shadow: 0px 0px 20px #373034;
+   padding: 10px;
+   margin: 10px;
+}
+
+
+.timer-controls{
+/*   float: right;*/
+   margin-left: 610px;
+}
+
+.timer-display{
+   border-radius: 5px;
+   background: #373034;
+   padding: 15px;
+   color: #E8F1DA;
+   font-size: 8em;
+   border: solid 1px #5F656B;
+   box-shadow: 0px 0px 10px #373034;
+   float: left;
+}
+
+.timer-control-label{
+   font-weight: bold;
+   font-size: 1.7em;
+   color: #F1E8F6;
+   width: 150px;
+   display: inline-block;
+   text-shadow: 1px 1px 3px #373034;
+   float: left;
+}
+
+.timer-control-input{
+   border: none;/* solid 2px #E8F1DA;*/
+   width: 80px;
+   color: #E8F1DA;
+   padding: 2px;
+   border-radius: 5px;
+   font-size: 1.7em;
+   background: #373034;
+}
+
+
+.timer-action{
+   background: #8B8988;
+   border: solid 2px #373034;
+   font-weight: bold;
+   color: #373034;
+   border-radius: 5px;
+   font-size: 2.7em;
+   box-shadow: 0px 0px 10px #373034;
+   text-shadow: 1px 1px 2px #5F656B;
+   width: 100%;
+   padding: 10px;
+}
+
+.timer-action:hover{
+   background: #373034;
+   border: solid 2px #373034;
+   color: #E8F1DA;
+   box-shadow: 0px 0px 10px #E8F1DA;
+   text-shadow: 1px 1px 2px #5F656B;
+}
+
+body{
+   font-family: sans-serif;
+   background: url('images/pattern-3.png');
+}
