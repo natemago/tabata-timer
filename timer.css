@@ -43,9 +43,25 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
    color: #E8F1DA;
    font-size: 8em;
    border: solid 1px #5F656B;
-   box-shadow: 0px 0px 10px #373034;
+   box-shadow: 0px 0px 10px #373034;  
+}
+
+.timer-notification-area{
    float: left;
 }
+
+.timer-info{
+   border-radius: 5px;
+   padding: 10px;
+   font-size: 3.7em;
+   color: #F1E8F6;
+   font-weight: bold;
+   background: rgba(139, 137, 136, 0.5);
+   margin: 15px;
+   text-align: center;
+}
+
+
 
 .timer-control-label{
    font-weight: bold;
@@ -70,7 +86,7 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
 
 .timer-action{
    background: #8B8988;
-   border: solid 2px #373034;
+   border: solid 1px #373034;
    font-weight: bold;
    color: #373034;
    border-radius: 5px;
@@ -83,7 +99,7 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
 
 .timer-action:hover{
    background: #373034;
-   border: solid 2px #373034;
+   border: solid 1px #373034;
    color: #E8F1DA;
    box-shadow: 0px 0px 10px #E8F1DA;
    text-shadow: 1px 1px 2px #5F656B;
