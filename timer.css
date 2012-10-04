@@ -54,7 +54,7 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
    border-radius: 5px;
    padding: 10px;
    font-size: 3.7em;
-   color: #F1E8F6;
+   color: #373034;
    font-weight: bold;
    background: rgba(139, 137, 136, 0.5);
    margin: 15px;
@@ -110,7 +110,63 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
    padding: 10px;
    border-radius: 5px;
    background: rgba(95,101,107,0.7);
-   margin: 10px;
+   margin-left: 70px;
+   margin-top: 30px;
+   border: solid 1px #373034;
+   box-shadow: 0px 0px 10px #373034;
+}
+
+.overlay-container{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   text-align: center;
+}
+.overlay-container .timer-info{
+   color: #E8F1DA;
+   padding-top: 50px;
+   padding-bottom: 50px;
+   font-size: 7em;
+   text-shadow: 0px 0px 4px #373034;
+}
+
+.info-text-title{
+   font-size: 0.5em;
+}
+
+.info-text{
+   font-size: 1.7em;
+}
+
+.state-error-mark{
+   border: solid 1px #111;
+   box-shadow: 0px 0px 4px #800;
+}
+
+.timer-display-like{
+   background: #373034;
+   color: #E8F1DA;
+}
+
+.info-text-smaller{
+   font-size: 0.7em;
+}
+
+.timer-explanation{
+   font-size: 0.8em;
+   margin: 5px;
+}
+.timer-explanation-entry{
+   padding: 0.5px;
+}
+
+.keyboard-button{
+   border-radius: 3px;
+   border: solid 1px #E8F1DA;
+   padding: 2px;
+   display: inline-block;
 }
 
 body{

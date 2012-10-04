@@ -12,33 +12,61 @@
                <div class="timer-float-info">
                   <div class="timer-info">
                      <div class="info-text-title">Round</div>
-                     <div class="info-text">7</div>
+                     <div class="info-text round-number">-</div>
+                  </div>
+                  
+               </div>
+               <div class="timer-float-info">
+                  <div class="timer-info timer-display-like">
+                     <div class="info-text-smaller round-type">Work</div>
                   </div>
                </div>
-            </div>
-            <div class="timer-info">
-               Work!
             </div>
          </div>
          <div class="timer-controls">
             <div class="timer-control-set">
                <span class="timer-control-label">Rounds: </span>
-               <input class="timer-control-input" value="8"></input>
+               <input class="timer-control-input input-rounds" value="8"></input>
             </div>
             <div class="timer-control-set">
                <span class="timer-control-label">Rest: </span>
-               <input class="timer-control-input" value="10"></input>
+               <input class="timer-control-input input-rest" value="10"></input>
             </div>
             <div class="timer-control-set">
                <span class="timer-control-label">Work: </span>
-               <input class="timer-control-input" value="20"></input>
+               <input class="timer-control-input input-work" value="20"></input>
             </div>
             <div class="timer-control-set">
-               <input type="button" class="timer-action " value="Start"/>
+               <input type="button" class="timer-action timer-start" value="Start"/>
             </div>
          </div>
          <div class="timer-footer">
             Tabata Timer
+            <div class="timer-explanation">
+               <div class="timer-explanation-entry"><span style="font-weight:bold">Keyboard:</span></div>
+               <div class="timer-explanation-entry">
+                  <span style="font-weight:bold">
+                     <span class="keyboard-button">Space</span>
+                     /
+                     <span class="keyboard-button">Return</span>/
+                     <span class="keyboard-button">s</span>
+                  </span> - Start/Stop timer</div>
+               <div class="timer-explanation-entry">
+                  <span style="font-weight:bold">
+                     <span class="keyboard-button">r</span>
+                  </span> - Start timer
+               </div>
+               <div class="timer-explanation-entry">
+                  <span style="font-weight:bold">
+                     <span class="keyboard-button">p</span>
+                  </span> - Stop timer
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="overlay-container" style="display: none;">      
+         <div class="timer-info global-notification">
+            Work!
          </div>
       </div>
    </body>
