@@ -105,6 +105,14 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
    text-shadow: 1px 1px 2px #5F656B;
 }
 
+.timer-float-info{
+   float: left;
+   padding: 10px;
+   border-radius: 5px;
+   background: rgba(95,101,107,0.7);
+   margin: 10px;
+}
+
 body{
    font-family: sans-serif;
    background: url('images/pattern-3.png');
