@@ -42,6 +42,7 @@
    };
    
    var TBTimer = function(config){
+      var self = this;
       this.resolution = config.resolution || 10;
       config.specs = config.specs || {};
       this.specs = {
@@ -53,6 +54,42 @@
       var current = {};
       
       this.displayEl = $('.timer-display')[0];
+      
+      this.sounds = config.sounds || {};
+      var sounds = {};
+      var toLoad = 0;
+      for(var sndName in this.sounds){
+         if(this.sounds.hasOwnProperty(sndName)){
+            var sound = new Audio(this.sounds[sndName]);
+            toLoad++;
+            sound.addEventListener("canplay", function(){
+               toLoad--;
+               console.log('Some sound loaded.',  ' - ', toLoad);
+               if(toLoad == 0){
+                  self.soundsLoaded();
+               }
+            }, false);
+            sounds[sndName] = sound;
+            sound.load();
+            console.log('Load sound: ', sndName, ' - ', toLoad);
+         }
+      }
+      
+      this.sounds = {
+         soundsAvailable: false,
+         tracks: sounds,
+         play: function(name){
+            if(this.soundsAvailable && this.tracks[name]){
+               this.tracks[name].play();
+            }
+         }
+      };
+      
+      
+      this.soundsLoaded = function(){
+         console.log('Sounds available');
+         this.sounds.soundsAvailable = true;
+      };
       
       this.getValues = function(){
          var rounds = $('.input-rounds').val();
@@ -210,11 +247,16 @@
             this.notifyForRound(roundNumber, current.round.type);
             if(current.round.type == 'rest'){
                this.notify('Rest!');
+               if(rn != 0){
+                  this.sounds.play('end-round');
+               }
             }else{
                this.notify('Work!');
+               this.sounds.play('start');
             }
          }else{
             this.notify('Bravo!');
+            this.sounds.play('end');
             this.stop();
          }
       };
@@ -262,7 +304,14 @@
    
    
    $(document).ready(function(){
-      tm = new TBTimer({});
+      tm = new TBTimer({
+         sounds: {
+            'start':'audio/start.wav',
+            'end':'audio/end.wav',
+            'end-round':'audio/end-round.wav',
+            'warning':'audio/warning.wav'
+         }
+      });
    });
    
 })(jQuery);
