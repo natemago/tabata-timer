@@ -1,7 +1,14 @@
 (function($){
+   var __scheduleTable = {};
+   var __scheduleId = 0;
    var schedule = function(callback, table, scope, error){
       var i = 0;
+      var id = __scheduleId++;
+      __scheduleTable[id] = true;
       var tick = function(){
+         if(!__scheduleTable[id]){
+            return;
+         }
          if(i < table.length){
             try{
                callback.call(scope || window, table[i], i);
@@ -15,10 +22,11 @@
             }
          }
       };
-      //if(table && table.length){
-      //   setTimeout(tick, table[i]);
-      //}
       tick();
+   };
+   
+   var clearSchedule = function(){
+      __scheduleTable = {};
    };
    
    var convertMillis = function(ms){
@@ -59,7 +67,7 @@
          try{
             rounds = parseInt(rounds);
          }catch(e){
-            $('.input-rounds').addClass('state-error-mark');
+            $('.input-rounds').addClass('delaystate-error-mark');
             correct =  false;
          }
          if(isNaN(rounds) || rounds <= 0){
@@ -105,6 +113,10 @@
       };
       
       this.start = function(){
+         if(this.running){
+             return;
+         }
+         clearSchedule();
          var s = this.getValues();
          if(s){
             var rs = [];
