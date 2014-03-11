@@ -191,6 +191,7 @@
          this.notifyForRound('-', 'rest');
          if(current.timerId){
             clearInterval(current.timerId);
+            current.alreadyWarned = false;
             current.round.end = new Date().getTime();
          }
          this.rounds = [];
@@ -218,6 +219,7 @@
          // stop current if running ....
          if(current.timerId){
             clearInterval(current.timerId);
+            current.alreadyWarned = false;
             current.round.end = new Date().getTime();
          }
          this.updateDisplay(0);
@@ -232,10 +234,17 @@
                var dtm = self.rounds[rn].total - elapsedTime;
                if(dtm > 0){
                   self.updateDisplay(dtm);
+                  if(dtm <= 5000 && 
+                        self.rounds[rn].total >= 5000 && 
+                           !current.alreadyWarned){
+                     self.sounds.play('warning');
+                     current.alreadyWarned = true;
+                  }
                }else{
                   self.updateDisplay(0);
                   if(current.timerId){
                      clearInterval(current.timerId);
+                     current.alreadyWarned = false;
                      current.round.end = new Date().getTime();
                   }
                }
