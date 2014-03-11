@@ -1,3 +1,22 @@
+/*
+   Tabata Timer - simple tabata timer
+   Copyright (C) 2014 Pavle Jonoski
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+*/
+
 (function($){
    var __scheduleTable = {};
    var __scheduleId = 0;
@@ -191,6 +210,7 @@
          this.notifyForRound('-', 'rest');
          if(current.timerId){
             clearInterval(current.timerId);
+            current.alreadyWarned = false;
             current.round.end = new Date().getTime();
          }
          this.rounds = [];
@@ -218,6 +238,7 @@
          // stop current if running ....
          if(current.timerId){
             clearInterval(current.timerId);
+            current.alreadyWarned = false;
             current.round.end = new Date().getTime();
          }
          this.updateDisplay(0);
@@ -232,10 +253,17 @@
                var dtm = self.rounds[rn].total - elapsedTime;
                if(dtm > 0){
                   self.updateDisplay(dtm);
+                  if(dtm <= 5000 && 
+                        self.rounds[rn].total >= 5000 && 
+                           !current.alreadyWarned){
+                     self.sounds.play('warning');
+                     current.alreadyWarned = true;
+                  }
                }else{
                   self.updateDisplay(0);
                   if(current.timerId){
                      clearInterval(current.timerId);
+                     current.alreadyWarned = false;
                      current.round.end = new Date().getTime();
                   }
                }
@@ -311,6 +339,13 @@
             'end-round':'audio/end-round.wav',
             'warning':'audio/warning.wav'
          }
+      });
+      $('.credits-popup-show').click(function(){
+         $('.credits-popup').show();
+      });
+      
+      $('.credits-popup-close').click(function(){
+         $('.credits-popup').hide();
       });
    });
    
