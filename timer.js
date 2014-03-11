@@ -340,6 +340,13 @@
             'warning':'audio/warning.wav'
          }
       });
+      $('.credits-popup-show').click(function(){
+         $('.credits-popup').show();
+      });
+      
+      $('.credits-popup-close').click(function(){
+         $('.credits-popup').hide();
+      });
    });
    
 })(jQuery);
