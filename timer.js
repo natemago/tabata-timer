@@ -233,6 +233,7 @@
          if(this.running){
              return;
          }
+         this.loadSounds(); // if we haven't already 
          clearSchedule();
          var s = this.getValues();
          if(s){
