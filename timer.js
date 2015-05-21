@@ -18,6 +18,18 @@
 */
 
 (function($){
+
+    var console = {
+        log: function(){
+            var message = '';
+            for(var i = 0; i < arguments.length; i++){
+                message += arguments[i] + ' ';
+            }
+            $('.console').html(
+                $('.console').html() + message + '\n');
+        }
+    };
+
    var __scheduleTable = {};
    var __scheduleId = 0;
    var schedule = function(callback, table, scope, error){
@@ -80,6 +92,29 @@
       for(var sndName in this.sounds){
          if(this.sounds.hasOwnProperty(sndName)){
             var sound = new Audio(this.sounds[sndName]);
+            
+            sound.addEventListener('error', function failed(e) {
+            // audio playback failed - show a message saying why
+            // to get the source of the audio element use $(this).src
+            switch (e.target.error.code) {
+             case e.target.error.MEDIA_ERR_ABORTED:
+               console.log('You aborted the video playback.');
+               break;
+             case e.target.error.MEDIA_ERR_NETWORK:
+               console.log('A network error caused the audio download to fail.');
+               break;
+             case e.target.error.MEDIA_ERR_DECODE:
+               console.log('The audio playback was aborted due to a corruption problem or because the video used features your browser did not support.');
+               break;
+             case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+               console.log('The video audio not be loaded, either because the server or network failed or because the format is not supported.');
+               break;
+             default:
+               console.log('An unknown error occurred.');
+               break;
+            }
+            }, true);
+            
             toLoad++;
             sound.addEventListener("canplay", function(){
                toLoad--;
@@ -91,6 +126,11 @@
             sounds[sndName] = sound;
             sound.load();
             console.log('Load sound: ', sndName, ' - ', toLoad);
+            
+            sound.addEventListener('playing', function(){
+                console.log('Sound', sndName, 'is playing');
+            }, true);
+            
          }
       }
       
@@ -98,8 +138,14 @@
          soundsAvailable: false,
          tracks: sounds,
          play: function(name){
+            console.log('Trying to play sound', name);
             if(this.soundsAvailable && this.tracks[name]){
+               console.log('Calling play() on sound', name);
                this.tracks[name].play();
+               console.log(' -> track:', this.tracks[name]);
+               console.log(' -> shoud start playing any minute now...');
+            }else{
+               console.log('Cannot play sound ', name,'. soundsAvailable=', this.soundsAvailable,'; this.tracks[name]=', this.tracks[name]);
             }
          }
       };
@@ -332,20 +378,23 @@
    
    
    $(document).ready(function(){
-      tm = new TBTimer({
-         sounds: {
-            'start':'audio/start.wav',
-            'end':'audio/end.wav',
-            'end-round':'audio/end-round.wav',
-            'warning':'audio/warning.wav'
-         }
-      });
+      
       $('.credits-popup-show').click(function(){
          $('.credits-popup').show();
       });
       
       $('.credits-popup-close').click(function(){
          $('.credits-popup').hide();
+      });
+      $(document).click(function(){
+        tm = new TBTimer({
+             sounds: {
+                'start':'audio/start.wav',
+                'end':'audio/end.wav',
+                'end-round':'audio/end-round.wav',
+                'warning':'audio/warning.wav'
+             }
+          });
       });
    });
    
