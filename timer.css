@@ -218,6 +218,13 @@ http://www.colourlovers.com/palette/1196612/storm_at_lit_tower
    display: inline-block;
 }
 
+.console{
+    background: #000;
+    color: #E8F1DA;
+    font-family: monospace;
+    font-size: 12px;
+}
+
 body{
    font-family: sans-serif;
    background: url('images/pattern-3.png');
